@@ -18,5 +18,30 @@
         android:id="@+id/fragmentLoginFragment"
         android:name="com.example.navigationjetpack.fragment.FragmentLoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_fragmentLoginFragment_to_fragmentSplashScreen"
+            app:destination="@id/fragmentSplashScreen" />
+        <action
+            android:id="@+id/action_fragmentLoginFragment_to_fragmentHomeFragment"
+            app:destination="@id/fragmentHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentHomeFragment"
+        android:name="com.example.navigationjetpack.fragment.FragmentHomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_fragmentHomeFragment_to_fragmentDialogFragment"
+            app:destination="@id/fragmentDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDialogFragment"
+        android:name="com.example.navigationjetpack.fragment.FragmentDialogFragment"
+        android:label="fragment_dialog"
+        tools:layout="@layout/fragment_dialog" >
+        <action
+            android:id="@+id/action_fragmentDialogFragment_to_fragmentHomeFragment"
+            app:destination="@id/fragmentHomeFragment" />
+    </fragment>
 </navigation>
