@@ -1,63 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".fragment.FragmentLoginFragment">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <LinearLayout
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_ET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_name_placeholder"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/login_BTN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerInParent="true"
-       >
+        android:text="@string/submit_btn_text"
+        android:layout_marginTop="10dp"/>
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/et_name"
-            android:hint="Enter Name"
-            android:inputType="textCapSentences"
-            android:layout_marginTop="4dp"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/et_age"
-            android:hint="Enter Age"
-            android:inputType="number"
-            android:layout_marginTop="4dp"/>
-
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Remember Me"
-            android:layout_marginTop="4dp"/>
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:id="@+id/bt_login"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"/>
-
-
-
-    </LinearLayout>
-
-
-</RelativeLayout>
+</LinearLayout>

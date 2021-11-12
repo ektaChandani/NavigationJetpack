@@ -1,32 +1,65 @@
 package com.example.navigationjetpack.fragment
 
+import android.content.Context
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.navigationjetpack.R
 
+import com.example.navigationjetpack.MainActivity
+import com.example.navigationjetpack.R
+import kotlinx.android.synthetic.main.fragment_splash_screen.*
 
 class FragmentSplashScreen : Fragment() {
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_splash_screen, container, false)
-    Handler(Looper.myLooper()!!).postDelayed({
-        findNavController().navigate(R.id.action_fragmentSplashScreen_to_fragmentLoginFragment)
-
-    },5000)
-
-        return view
+        return inflater.inflate(R.layout.fragment_splash_screen, container, false)
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        setListeners()
+    }
 
+    private fun setListeners() {
+        splashNext_BTN.setOnClickListener {
+            checkLogin()
+        }
+    }
+
+    /**
+     * Check if user logged in
+     * If not then redirect to Login fragment
+     */
+    private fun checkLogin() {
+        if (isUserLoggedIn())
+            navigateToHomeDestination()
+        else {
+            navigateToLoginDestination()
+        }
+    }
+
+    private fun navigateToLoginDestination() {
+        // When using Global action, we need to pass the resource ID
+        findNavController().navigate(R.id.action_global_loginFragment)
+    }
+
+    private fun navigateToHomeDestination() {
+        // Navigate to a destination
+        val action =
+            FragmentSplashScreenDirections.actionSplashFragmentToHomeFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun isUserLoggedIn(): Boolean {
+        val sharedPreferences = activity?.getSharedPreferences(MainActivity.MY_PREFERENCES, Context.MODE_PRIVATE)
+        val name = sharedPreferences?.getString(MainActivity.NAME_KEY, "")
+        return name != ""
+    }
 }
